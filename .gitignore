@@ -1,0 +1,13 @@
+# Node
+node_modules/
+dist/
+.env
+
+# Docker
+*.local
+docker-compose.override.yml
+
+# IDE
+.vscode/
+.idea/
+
