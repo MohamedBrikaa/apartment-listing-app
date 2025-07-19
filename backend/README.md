@@ -52,7 +52,7 @@ docker-compose up --build
 5. Access the API at:
 
 ```
-http://localhost:3000
+http://localhost:4000
 ```
 
 ## 📚 API Documentation with Swagger
@@ -70,7 +70,7 @@ npm install --save @nestjs/swagger swagger-ui-express
 Once the backend is running, visit:
 
 ```
-http://localhost:3000/api
+http://localhost:4000/api
 ```
 
 You will find the Swagger UI with full documentation for all endpoints, request/response schemas, and examples.

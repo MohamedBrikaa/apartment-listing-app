@@ -70,14 +70,18 @@ export class ApartmentsController {
               type: 'array',
               items: { $ref: getSchemaPath(Apartment) },
             },
+            total: { type: 'number' },
           },
         },
       ],
     },
   })
   async findAll(@Query() filterDto: FilterApartmentDto) {
-    const apartments = await this.apartmentService.findAll(filterDto);
-    return { message: 'Apartments fetched successfully', data: apartments };
+    const result = await this.apartmentService.findAll(filterDto);
+    return {
+      message: 'Apartments fetched successfully',
+      data: result,
+    };
   }
 
   @Get(':id')

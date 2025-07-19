@@ -11,7 +11,7 @@ import { ApiProperty } from '@nestjs/swagger';
 @Entity('apartment_photo')
 export class ApartmentPhoto {
   @PrimaryGeneratedColumn('uuid')
-  @ApiProperty()
+  @ApiProperty({ description: 'Unique identifier for the photo' })
   id: string;
 
   @Column()
