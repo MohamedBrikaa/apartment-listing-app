@@ -28,6 +28,20 @@ export class Apartment {
 
   @Column('integer')
   @ApiProperty({
+    example: 3,
+    description: 'Number of bedrooms in the apartment',
+  })
+  bedrooms: number;
+
+  @Column('integer')
+  @ApiProperty({
+    example: 2,
+    description: 'Number of bathrooms in the apartment',
+  })
+  baths: number;
+
+  @Column('integer')
+  @ApiProperty({
     example: 2,
     description: 'Floor number of the apartment',
   })

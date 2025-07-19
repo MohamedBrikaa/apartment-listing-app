@@ -10,14 +10,11 @@ import {
   NotFoundCustomException,
 } from '@common/exceptions/custom.exception';
 import { ApartmentPhoto } from '@entities/apartment-photo.entity';
-import { join } from 'path';
 import { FileService } from '@common/services/file.service';
 
 @Injectable()
 export class ApartmentsService {
   private readonly logger = new Logger(ApartmentsService.name);
-  private readonly uploadPath = join(process.cwd(), 'uploads', 'apartments');
-  private readonly thumbnailSize = { width: 300, height: 200 };
 
   constructor(
     @InjectRepository(Apartment)
@@ -47,7 +44,9 @@ export class ApartmentsService {
     }
   }
 
-  async findAll(filter: FilterApartmentDto): Promise<Apartment[]> {
+  async findAll(
+    filter: FilterApartmentDto,
+  ): Promise<{ apartments: Apartment[]; total: number }> {
     try {
       const { unitName, unitNumber, project, page = 1, limit = 10 } = filter;
 
@@ -64,12 +63,15 @@ export class ApartmentsService {
         Object.assign(where, { project: ILike(`%${project}%`) });
       }
 
-      return await this.apartmentRepo.find({
+      const [data, total] = await this.apartmentRepo.findAndCount({
         where,
         skip: (page - 1) * limit,
         take: limit,
         order: { createdAt: 'DESC' },
+        relations: ['photos'],
       });
+
+      return { apartments: data, total };
     } catch (error) {
       this.logger.error('Failed to fetch apartments', error.stack);
 

@@ -35,6 +35,9 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'uploads'), {
     prefix: '/uploads/',
   });
+  app.enableCors({
+    origin: '*',
+  });
 
   await app.listen(4000);
 }
@@ -53,5 +56,5 @@ ensureUploadDir()
   .catch(() => console.error('Failed to create upload directory'));
 
 bootstrap()
-  .then(() => console.log('Server running on port 3000'))
+  .then(() => console.log('Server running on port 4000'))
   .catch((err) => console.error(err));

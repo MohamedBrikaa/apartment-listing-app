@@ -10,6 +10,22 @@ export class CreateApartmentDto {
   @IsNotEmpty()
   unitName: string;
 
+  @IsNumber()
+  @IsNotEmpty()
+  @ApiProperty({
+    example: 3,
+    description: 'Number of bedrooms in the apartment',
+  })
+  bedrooms: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  @ApiProperty({
+    example: 2,
+    description: 'Number of bathrooms in the apartment',
+  })
+  baths: number;
+
   @ApiProperty({
     example: 2,
     description: 'The floor number of the apartment',
