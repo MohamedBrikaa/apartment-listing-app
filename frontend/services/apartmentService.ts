@@ -2,9 +2,8 @@ import axios from 'axios';
 
 const isBrowser = typeof window !== 'undefined';
 const BASE_URL = isBrowser
-  ? 'http://localhost:4000'
-  : process.env.NEXT_PUBLIC_API_URL;
-
+  ? process.env.NEXT_PUBLIC_API_URL
+  : process.env.INTERNAL_API_URL;
 
 
 export const createApartment = async (data: unknown) => {
@@ -14,7 +13,7 @@ export const createApartment = async (data: unknown) => {
 
 export const getApartments = async (filters = {}) => {
   const response = await axios.get(`${BASE_URL}/api/apartments`, { params: filters });
- return {
+  return {
     data: response.data.data.apartments,
     total: response.data.data.total,
   };

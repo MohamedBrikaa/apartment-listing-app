@@ -8,10 +8,6 @@ export default async function ApartmentDetailPage({
 }) {
   const { id } = await params;
   const { data: apartment } = await getApartmentById(id);
-  console.log('data');
-  console.log('data');
-  console.log(apartment);
-
   if (!apartment) {
     return <div>Apartment not found.</div>;
   }
