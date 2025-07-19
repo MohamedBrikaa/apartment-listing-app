@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-const API_INTERNAL_URL = process.env.API_INTERNAL_URL;
+const INTERNAL_API_URL = process.env.INTERNAL_API_URL || 'http://backend:4000';
 
 const nextConfig: NextConfig = {
   images: {
@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/uploads/:path*',
-        destination: `http://backend:4000/uploads/:path*`,
+        destination: `${INTERNAL_API_URL}/uploads/:path*`,
       },
     ];
   },
