@@ -7,7 +7,7 @@ export class FileService {
   private readonly logger = new Logger(FileService.name);
 
   getPublicUrl(fileName: string, folder = 'apartments'): string {
-    return `${process.env.APP_HOST_URL}/uploads/${folder}/${fileName}`;
+    return `/uploads/${folder}/${fileName}`;
   }
 
   async deleteUploadedFiles(fileNames: string[], folder = 'apartments') {
