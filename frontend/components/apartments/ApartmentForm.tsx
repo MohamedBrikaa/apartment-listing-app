@@ -54,18 +54,14 @@ export default function ApartmentForm() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log('Submitting form with data:', formData); // 👈 Add this
-
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-    console.log('Submitting form with data:', formData); // 👈 Add this
 
     try {
       const newApartment = await createApartment(formData);
       router.push(`/apartments/${newApartment.id}`);
     } catch (err) {
-      console.log(err);
       setError('Failed to create apartment. Please try again.');
       console.error('Creation error:', err);
     } finally {
@@ -107,7 +103,7 @@ export default function ApartmentForm() {
               className={inputStyle}
             />
             <label htmlFor="unitName" className={labelStyle}>
-              Unit Namesssssssssssssssssssssss
+              Unit Name
             </label>
           </div>
 
