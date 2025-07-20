@@ -67,7 +67,8 @@ APP_HOST_URL=http://localhost:4000
 #### `frontend/.env.local`
 
 ```env
-NEXT_PUBLIC_API_BASE_URL=http://localhost:4000
+NEXT_PUBLIC_API_URL=http://localhost:4000
+INTERNAL_API_URL=http://localhost:4000
 ```
 
 ---
